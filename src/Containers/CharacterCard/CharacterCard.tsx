@@ -1,11 +1,11 @@
 import './CharacterCard.css';
 
-export const CharacterCard = () => {
+export const CharacterCard = ( o: { name: string, image: string }) => {
   return (
-    <div className='CharacterCard'>
-        <img alt='Character'></img>
-        <p>name</p>
+    <article className='CharacterCard'>
+        <img src={o.image} alt='Character'></img>
+        <p>{o.name}</p>
         <button>Подробнее</button>
-    </div>
+    </article>
   )
 }

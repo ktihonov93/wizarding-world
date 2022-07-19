@@ -1,11 +1,16 @@
-import './CharacterCard.css';
+import "./CharacterCard.css";
 
-export const CharacterCard = ( o: { name: string, image: string }) => {
+type AppProps = {
+  name: string;
+  image: string;
+};
+
+export const CharacterCard = ({ name, image }: AppProps) => {
   return (
-    <article className='CharacterCard'>
-        <img src={o.image} alt='Character'></img>
-        <p>{o.name}</p>
-        <button>Подробнее</button>
+    <article className="CharacterCard">
+      <img src={image} alt="Character"></img>
+      <p>{name}</p>
+      <button>Подробнее</button>
     </article>
-  )
-}
+  );
+};

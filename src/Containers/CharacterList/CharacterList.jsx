@@ -11,23 +11,21 @@ export const CharacterList = () => {
 
   useEffect(() => {
     axios
-      .get(
-        `https://hp-api-marcosmarp.herokuapp.com/api/characters`
-      )
+      .get(`https://hp-api-marcosmarp.herokuapp.com/api/characters`)
       .then((res) => {
         setCharacters(res.data.slice(0, 12));
         setLoading(false);
         //console.log(res);
       });
-      
-    
   }, [offset]);
 
-  return loading ? <LoadingSpinner /> : (
+  return loading ? (
+    <LoadingSpinner />
+  ) : (
     <section className="CharacterList">
       {characters.map((el) => (
-        <CharacterCard key = {el.id} name = {el.name} image = {el.image} />
+        <CharacterCard key={el.id} id={el.id} name={el.name} image={el.image} />
       ))}
-    </section>    
+    </section>
   );
 };

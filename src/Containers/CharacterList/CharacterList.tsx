@@ -1,24 +1,34 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import {useDebounce} from 'use-debounce';
+import { useDebounce } from "use-debounce";
 //import LoadingSpinner from "../../Components/LoadingSpinner";
 import CharacterCard from "../CharacterCard";
 import "./CharacterList.css";
 
+type Character = [
+  {
+    name: string;
+    image: string;
+    id: string;
+  }
+];
+
 export const CharacterList = () => {
-  const [characters, setCharacters] = useState(null);
+  const [characters, setCharacters] = useState<Character>();
   //const [loading, setLoading] = useState(true);
   const cardsOnPage = 12;
   const [search, setSearch] = useState("");
 
   const fetchData = () => {
     axios
-      .get(`https://hp-api-marcosmarp.herokuapp.com/api/characters`)
+      .get("https://hp-api-marcosmarp.herokuapp.com/api/characters")
       .then((res) => {
         setCharacters(
           res.data
-            .filter((character) =>
-              character.name.toLowerCase().includes(searchDebounced.toLowerCase())
+            .filter((character: { name: string }) =>
+              character.name
+                .toLowerCase()
+                .includes(searchDebounced.toLowerCase())
             )
             .slice(0, cardsOnPage)
         );
@@ -26,10 +36,12 @@ export const CharacterList = () => {
       });
   };
 
-  const [searchDebounced] = useDebounce(search, 250)
+  const timeout = 250;
+
+  const [searchDebounced] = useDebounce(search, timeout);
 
   useEffect(() => {
-    searchDebounced && fetchData()
+    searchDebounced && fetchData();
   }, [searchDebounced]);
 
   return (

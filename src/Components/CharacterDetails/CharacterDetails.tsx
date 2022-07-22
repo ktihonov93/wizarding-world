@@ -4,10 +4,32 @@ import { useParams } from "react-router-dom";
 import LoadingSpinner from "../LoadingSpinner";
 import "./CharacterDetails.css";
 
+type Character = {
+  name: string;
+  image: string;
+  gender: string;
+  house: string;
+  birthDate: string;
+  isWizard: boolean;
+  ancestry: string;
+  eyeColour: string;
+  hairColour: string;
+  wand: {
+    wood: {
+      name: string;
+      core: string;
+    };
+    length: string;
+  }
+  isHogwartsStudent: boolean;
+  isHogwartsStaff: boolean;
+  actor: string;
+};
+
 export const CharacterDetails = () => {
   const { id } = useParams();
 
-  const [character, setCharacter] = useState(null);
+  const [character, setCharacter] = useState<Character>();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -16,13 +38,19 @@ export const CharacterDetails = () => {
       .then((res) => {
         setCharacter(res.data);
         setLoading(false);
-        console.log(res)
+        console.log(res);
       });
   }, [id]);
 
-  return loading ? (
-    <LoadingSpinner />
-  ) : (
+  if (loading) {
+    return <LoadingSpinner />;
+  }
+
+  if (!character) {
+    return null;
+  }
+
+  return (
     <article className="CharacterDetails">
       <h2>Character Details</h2>
       <p>name: {character.name}</p>
@@ -37,7 +65,14 @@ export const CharacterDetails = () => {
       <p>name of wand wood: {character.wand.wood.name}</p>
       <p>name of wand core: {character.wand.wood.core}</p>
       <p>wand length: {character.wand.length}</p>
-      <p>Connection to Hogwarts: {character.isHogwartsStudent? "student" : (character.isHogwartsStaff ? "staff" : "none")}</p>
+      <p>
+        Connection to Hogwarts:{" "}
+        {character.isHogwartsStudent
+          ? "student"
+          : character.isHogwartsStaff
+          ? "staff"
+          : "none"}
+      </p>
       <p>actor: {character.actor}</p>
     </article>
   );

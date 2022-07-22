@@ -1,12 +1,18 @@
-import CharacterList  from './Containers/CharacterList';
-import './App.css';
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import Header from "./Containers/Header";
+import CharacterList from "./Containers/CharacterList";
+import CharacterDetails from "./Components/CharacterDetails";
+import "./App.css";
 
-function App() {
+export const App = () => {
   return (
-    <div className="App">
-      <CharacterList />
-    </div>
+    <Router>
+      <Header />
+      <Routes>
+        <Route path="/" element={<CharacterList />} />
+        <Route path="/:id" element={<CharacterDetails />} />
+      </Routes>
+      
+    </Router>
   );
-}
-
-export default App;
+};

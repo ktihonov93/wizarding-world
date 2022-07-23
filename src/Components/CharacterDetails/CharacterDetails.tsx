@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import LoadingSpinner from "../LoadingSpinner";
@@ -20,7 +20,7 @@ type Character = {
       core: string;
     };
     length: string;
-  }
+  };
   isHogwartsStudent: boolean;
   isHogwartsStaff: boolean;
   actor: string;
@@ -31,6 +31,8 @@ export const CharacterDetails = () => {
 
   const [character, setCharacter] = useState<Character>();
   const [loading, setLoading] = useState(true);
+
+  const defaultImage = "https://cdn.pixabay.com/photo/2017/06/08/17/32/not-found-2384304_960_720.jpg"
 
   useEffect(() => {
     axios
@@ -53,18 +55,18 @@ export const CharacterDetails = () => {
   return (
     <article className="CharacterDetails">
       <h2>Character Details</h2>
-      <p>name: {character.name}</p>
-      <img src={character.image} alt="character" />
-      <p>gender: {character.gender}</p>
-      <p>house: {character.house}</p>
-      <p>birthDate: {character.birthDate}</p>
-      <p>{character.isWizard ? "Can" : "Can't"} do magic</p>
-      <p>ancestry: {character.ancestry}</p>
-      <p>eyeColour: {character.eyeColour}</p>
-      <p>hairColour: {character.hairColour}</p>
-      <p>name of wand wood: {character.wand.wood.name}</p>
-      <p>name of wand core: {character.wand.wood.core}</p>
-      <p>wand length: {character.wand.length}</p>
+      <p>name: {character.name || "unknown"}</p>
+      <img src={character.image || defaultImage} alt="character" />
+      <p>gender: {character.gender || "unknown"}</p>
+      <p>house: {character.house || "unknown"}</p>
+      <p>birthDate: {character.birthDate || "unknown"}</p>
+      <p>wizard: {character.isWizard ? "yes" : (character.isWizard === false ? "no" : "unknown")}</p>
+      <p>ancestry: {character.ancestry || "unknown"}</p>
+      <p>eyeColour: {character.eyeColour || "unknown"}</p>
+      <p>hairColour: {character.hairColour || "unknown"}</p>
+      <p>name of wand wood: {character.wand?.wood?.name || "unknown"}</p>
+      <p>name of wand core: {character.wand?.wood?.core || "unknown"}</p>
+      <p>wand length: {character?.wand?.length || "unknown"}</p>
       <p>
         Connection to Hogwarts:{" "}
         {character.isHogwartsStudent
@@ -73,7 +75,7 @@ export const CharacterDetails = () => {
           ? "staff"
           : "none"}
       </p>
-      <p>actor: {character.actor}</p>
+      <p>actor: {character.actor || "unknown"}</p>
     </article>
   );
 };

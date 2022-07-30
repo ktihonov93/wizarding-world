@@ -12,7 +12,6 @@ type Characters = {
 };
 
 export const CharacterList = (characters: Characters) => {
-  console.log(characters.characters);
   return (
     <section className="CharacterList">
       {characters.characters.map((el) => (

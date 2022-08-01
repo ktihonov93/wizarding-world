@@ -1,20 +1,18 @@
-import React, { useState, useEffect, useCallback } from "react";
+import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { HashRouter as Router, Routes, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Home from "./pages/Home";
+import Home from "./Containers/Home";
+import CharacterDetails from "./Components/CharacterDetails";
+import FavoriteCharacterList from "./Containers/FavoriteCharacterList";
 import Profile from "./pages/Profile";
 import BoardUser from "./pages/BoardUser";
-import BoardModerator from "./pages/BoardModerator";
-import BoardAdmin from "./pages/BoardAdmin";
 import { logout } from "./slices/auth";
 import EventBus from "./common/EventBus";
 const App = () => {
-  //const [showModeratorBoard, setShowModeratorBoard] = useState(false);
-  //const [showAdminBoard, setShowAdminBoard] = useState(false);
   const { user: currentUser } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const logOut = useCallback(() => {
@@ -43,7 +41,7 @@ const App = () => {
       <div>
         <nav className="navbar navbar-expand navbar-dark bg-dark">
           <Link to={"/"} className="navbar-brand">
-            bezKoder
+            Wizarding World
           </Link>
           <div className="navbar-nav mr-auto">
             <li className="nav-item">
@@ -75,6 +73,11 @@ const App = () => {
           ) : (
             <div className="navbar-nav ml-auto">
               <li className="nav-item">
+                <Link to={"/favorites"} className="nav-link">
+                  favorites
+                </Link>
+              </li>
+              <li className="nav-item">
                 <Link to={"/login"} className="nav-link">
                   Login
                 </Link>
@@ -90,12 +93,16 @@ const App = () => {
         <div className="container mt-3">
           <Routes>
             <Route exact path="/" element={<Home />} />
+            <Route path="/:id" element={<CharacterDetails />} />
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/register" element={<Register />} />
             <Route exact path="/profile" element={<Profile />} />
             <Route path="/user" element={<BoardUser />} />
-            <Route path="/mod" element={<BoardModerator />} />
-            <Route path="/admin" element={<BoardAdmin />} />
+            <Route
+              exact
+              path="/favorites"
+              element={<FavoriteCharacterList />}
+            />
           </Routes>
         </div>
       </div>
@@ -103,10 +110,6 @@ const App = () => {
   );
 };
 export default App;
-
-
-
-
 
 //старый вариант страницы без регистрации на всякий случай
 /*import { HashRouter as Router, Routes, Route } from "react-router-dom";

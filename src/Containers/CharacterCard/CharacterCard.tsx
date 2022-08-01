@@ -32,7 +32,7 @@ export const CharacterCard = ({
       <span
         onClick={() =>
           storedCharacter
-            ? removeCharacterFromFavorites(character.name)
+            ? removeCharacterFromFavorites(name)
             : addCharacterToFavorites(character)
         }
       >

@@ -18,7 +18,7 @@ type AppProps = {
 
 export const CharacterContext = createContext(initialState as AppProps);
 
-export const PokemonProvider = (props: { children: any }) => {
+export const CharacterProvider = (props: { children: any }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
   useEffect(() => {

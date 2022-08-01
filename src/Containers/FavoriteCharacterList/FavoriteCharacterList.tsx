@@ -4,16 +4,16 @@ import CharacterCard from "../CharacterCard";
 import "./FavoriteCharacterList.css";
 
 type Characters = {
-    characters: [
-      {
-        name: string;
-        image: string;
-        id: string;
-        storedCharacter: boolean;
-        addCharacterToFavorites: Function;
-      }
-    ];
-  };
+  characters: [
+    {
+      name: string;
+      image: string;
+      id: string;
+      storedCharacter: boolean;
+      addCharacterToFavorites: Function;
+    }
+  ];
+};
 
 export const FavoriteCharacterList = () => {
   const { favorites, addCharacterToFavorites, removeCharacterFromFavorites } =
@@ -28,6 +28,8 @@ export const FavoriteCharacterList = () => {
             <CharacterCard
               key={i}
               id={el.id}
+              name={el.name}
+              image={el.image}
               character={el}
               storedCharacter={favorites.find((o) => o.name === el.name)}
               addCharacterToFavorites={addCharacterToFavorites}

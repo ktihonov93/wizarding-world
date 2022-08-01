@@ -9,8 +9,6 @@ type Characters = {
       name: string;
       image: string;
       id: string;
-      storedCharacter: boolean;
-      addCharacterToFavorites: Function;
     }
   ];
 };
@@ -29,6 +27,8 @@ export const CharacterList = (characters: Characters) => {
     addCharacterToFavorites,
     removeCharacterFromFavorites,
   }: AppProps = useContext(CharacterContext);
+
+  console.log("addCharacterToFavorites in CharacterList" , typeof addCharacterToFavorites)
 
   return (
     <section className="CharacterList">

@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { login } from "../slices/auth";
 import { clearMessage } from "../slices/message";
+import PropTypes from 'prop-types';
+
 const Login = (props) => {
   const [loading, setLoading] = useState(false);
   const { isLoggedIn, user } = useSelector((state) => state.auth);
@@ -23,21 +25,18 @@ const Login = (props) => {
     password: Yup.string().required("This field is required!")
   });
   const handleLogin = (formValue) => {
-    console.log("formValue: ", formValue);
     const { username, password } = formValue;
     setLoading(true);
 
     dispatch(login({ username, password }))
-      //.unwrap()
+      .unwrap()
       .then((res) => {
-        console.log("res", res);
         props.history.push("/profile");
         //window.location.reload();
       })
       .catch(() => {
         setLoading(false);
       });
-    console.log("user in handleLogin", user);
   };
 
   if (isLoggedIn) {
@@ -105,3 +104,7 @@ const Login = (props) => {
   );
 };
 export default Login;
+
+Login.propTypes = {
+  loading: PropTypes.bool
+}

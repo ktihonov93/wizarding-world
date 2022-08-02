@@ -3,18 +3,6 @@ import { CharacterContext } from "../../Utils/CharacterContext";
 import CharacterCard from "../CharacterCard";
 import "./FavoriteCharacterList.css";
 
-type Characters = {
-  characters: [
-    {
-      name: string;
-      image: string;
-      id: string;
-      storedCharacter: boolean;
-      addCharacterToFavorites: Function;
-    }
-  ];
-};
-
 export const FavoriteCharacterList = () => {
   const { favorites, addCharacterToFavorites, removeCharacterFromFavorites } =
     useContext(CharacterContext);

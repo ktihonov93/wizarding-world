@@ -4,6 +4,9 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { register } from "../slices/auth";
 import { clearMessage } from "../slices/message";
+import PropTypes from 'prop-types';
+
+
 const Register = () => {
   const [successful, setSuccessful] = useState(false);
   const { message } = useSelector((state) => state.message);
@@ -122,3 +125,7 @@ const Register = () => {
   );
 };
 export default Register;
+
+Register.propTypes = {
+  successful: PropTypes.bool
+}

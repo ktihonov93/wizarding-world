@@ -38,8 +38,7 @@ export const login = createAsyncThunk(
       let parsedData = JSON.parse(data);
       console.log("data", data);
 
-      if (data && password === parsedData.password)
-        return { user: parsedData };
+      if (data && password === parsedData.password) return { user: parsedData };
 
       throw new Error("Correct your data or Sign up");
     } catch (error) {
@@ -57,12 +56,12 @@ export const login = createAsyncThunk(
 export const logout = createAsyncThunk("auth/logout", async () => {
   await AuthService.logout();
 });
-const user = null//store ? store.getState().auth : null
+const user = null; //store ? store.getState().auth : null
 let initialState = user
   ? { isLoggedIn: true, user }
   : { isLoggedIn: false, user: null };
 
-  console.log("initialState", initialState)
+console.log("initialState", initialState);
 const authSlice = createSlice({
   name: "auth",
   initialState,

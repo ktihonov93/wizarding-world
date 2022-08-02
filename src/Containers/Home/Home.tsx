@@ -3,21 +3,20 @@ import axios from "axios";
 import { useDebounce } from "use-debounce";
 import CharacterList from "../CharacterList";
 import SearchPanel from "../../Components/SearchPanel";
-import Form from "react-validation/build/form";
-import Input from "react-validation/build/input";
-import CheckButton from "react-validation/build/button";
 import "./Home.css";
 
-/*type Character = [
+type Character = [
   {
     name: string;
     image: string;
     id: string;
+    storedCharacter: boolean;
+    addCharacterToFavorites: Function;
   }
-];*/
+];
 
 export const Home = () => {
-  const [characters, setCharacters] = useState/*<Character>*/(null);
+  const [characters, setCharacters] = useState<Character>();
   const cardsOnPage = 12;
   const [search, setSearch] = useState("");
 
@@ -27,7 +26,7 @@ export const Home = () => {
       .then((res) => {
         setCharacters(
           res.data
-            .filter((character/*: { name: string }*/) =>
+            .filter((character: { name: string }) =>
               character.name
                 .toLowerCase()
                 .includes(searchDebounced.toLowerCase())
@@ -46,29 +45,15 @@ export const Home = () => {
   }, [searchDebounced]);
 
   return (
-    <section className="Home">
+    <section className="Home container">
+      <header className="jumbotron">
+        <h3>
+          Hi there! You got to the front page about characters of Harry Potter
+          universe. Please Sign up or Sign in if you haven't done it yet. Enjoy!
+        </h3>
+      </header>
       <SearchPanel callback={setSearch} />
       {characters && <CharacterList characters={characters} />}
-      <Form>
-          <div className="form-group">
-            <label htmlFor="username">Username</label>
-            <Input
-              type="text"
-              className="form-control"
-              
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <Input
-              type="password"
-              className="form-control"
-              name="password"
-              
-            />
-          </div>
-          <CheckButton style={{ display: "none" }}  />
-        </Form>
     </section>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import UserService from "../services/user.service";
 const BoardUser = () => {
   const [content, setContent] = useState("");
@@ -18,6 +18,7 @@ const BoardUser = () => {
       }
     );
   }, []);
+
   return (
     <div className="container">
       <header className="jumbotron">

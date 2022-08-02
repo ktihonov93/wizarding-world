@@ -30,7 +30,6 @@ const Login = (props) => {
     dispatch(login({ username, password }))
       //.unwrap()
       .then((res) => {
-        //уже здесь payload c ошибкой
         console.log("res", res);
         props.history.push("/profile");
         //window.location.reload();

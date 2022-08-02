@@ -13,22 +13,12 @@ type Characters = {
   ];
 };
 
-type AppProps = {
-  favorites: {
-    name: string;
-  }[];
-  addCharacterToFavorites: Function;
-  removeCharacterFromFavorites: Function;
-};
-
 export const CharacterList = (characters: Characters) => {
   const {
     favorites,
     addCharacterToFavorites,
     removeCharacterFromFavorites,
-  }: AppProps = useContext(CharacterContext);
-
-  console.log("addCharacterToFavorites in CharacterList" , typeof addCharacterToFavorites)
+  } = useContext(CharacterContext);
 
   return (
     <section className="CharacterList">

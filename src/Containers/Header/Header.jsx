@@ -1,4 +1,3 @@
-import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { logout } from "../../slices/auth";
@@ -7,9 +6,7 @@ import "./Header.css";
 export const Header = () => {
   const { user: currentUser } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-  const logOut = useCallback(() => {
-    dispatch(logout());
-  }, [dispatch]);
+  const logOut = dispatch(logout());
 
   return (
     <nav className="navbar navbar-expand navbar-dark bg-dark">
@@ -48,6 +45,11 @@ export const Header = () => {
           <li className="nav-item">
             <Link to={"/favorites"} className="nav-link">
               favorites
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to={"/history"} className="nav-link">
+              history
             </Link>
           </li>
           <li className="nav-item">

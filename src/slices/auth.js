@@ -12,22 +12,24 @@ import AuthService from "../services/auth.service";
 export const register = createAsyncThunk(
   "auth/register",
   async ({ username, email, password }, thunkAPI) => {
-    try {
-      const response = await AuthService.register(username, email, password);
-      console.log("prev state", thunkAPI.getState());
-      thunkAPI.dispatch(setMessage(response.message));
-      console.log("next state", thunkAPI.getState());
-      return response;
-    } catch (error) {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-      thunkAPI.dispatch(setMessage(message));
-      return thunkAPI.rejectWithValue();
-    }
+    return await AuthService.register(username, email, password)
+      .then((response) => {
+        thunkAPI.dispatch(
+          setMessage("Registration was successful! Please log in!")
+        );
+        return response;
+      })
+      .catch((error) => {
+        const message =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
+        console.log(message);
+        thunkAPI.dispatch(setMessage(message));
+        return thunkAPI.rejectWithValue();
+      });
   }
 );
 export const login = createAsyncThunk(
@@ -36,7 +38,6 @@ export const login = createAsyncThunk(
     try {
       const data = await AuthService.login(username, password);
       let parsedData = JSON.parse(data);
-      console.log("data", data);
 
       if (data && password === parsedData.password) return { user: parsedData };
 
@@ -77,8 +78,6 @@ const authSlice = createSlice({
       state.user = action.payload.user;
     },
     [login.rejected]: (state, action) => {
-      console.log("rejected ");
-      console.log(login);
       state.isLoggedIn = false;
       state.user = null;
     },

@@ -6,7 +6,7 @@ const Profile = () => {
   console.log("in profile");
   const { user: currentUser } = useSelector((state) => state.auth);
   useSelector((state) => console.log(state.auth));
-  console.log("currentUser", typeof currentUser);
+  console.log("currentUser", currentUser);
 
   if (!currentUser) {
     console.log("redirect");

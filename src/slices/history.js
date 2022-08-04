@@ -10,7 +10,7 @@ export const history = createAction("history", function (text) {
   };
 });
 
-export const historyItem = createAction("historyItem", function ({text}) {
+export const historyItem = createAction("historyItem", function (text) {
   return {
     payload: text,
   };
@@ -31,7 +31,7 @@ const authSlice = createSlice({
       console.log(state.history);
     },
     historyItem: (state, action) => {
-      //console.log(state)
+      console.log(action)
       state.historyItem = action.payload;
       console.log(state.historyItem);
     },

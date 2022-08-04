@@ -1,16 +1,18 @@
 const register = (username, email, password) => {
-
-  localStorage.setItem(
-    username,
-    JSON.stringify({
-      email,
+  if (JSON.parse(localStorage.getItem(username))) {
+    return Promise.reject(new Error("User with this username already exists!"));
+  } else {
+    localStorage.setItem(
       username,
-      password
-    })
-  );
-  let user = JSON.parse(localStorage.getItem(username));
-  console.log("user after parse", user);
-  return Promise.resolve(user);
+      JSON.stringify({
+        email,
+        username,
+        password,
+      })
+    );
+    let user = JSON.parse(localStorage.getItem(username));
+    return Promise.resolve(user);
+  }
 };
 
 const login = (username, password) => {
@@ -25,6 +27,6 @@ const logout = () => {
 const authService = {
   register,
   login,
-  logout
+  logout,
 };
 export default authService;

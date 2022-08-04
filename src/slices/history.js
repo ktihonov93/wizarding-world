@@ -10,16 +10,30 @@ export const history = createAction("history", function (text) {
   };
 });
 
-let initialState = [];
+export const historyItem = createAction("historyItem", function ({text}) {
+  return {
+    payload: text,
+  };
+});
+
+let initialState = {
+  history: [],
+  historyItem: "",
+};
 
 const authSlice = createSlice({
   name: "history",
   initialState,
   extraReducers: {
-    [history]: (state, action) => {
-        console.log(state)
-      state = state.push(action.payload);
-      console.log("state");
+    history: (state, action) => {
+      console.log(action.payload)
+      state.history = [...state.history, action.payload];
+      console.log(state.history);
+    },
+    historyItem: (state, action) => {
+      //console.log(state)
+      state.historyItem = action.payload;
+      console.log(state.historyItem);
     },
   },
 });

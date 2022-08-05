@@ -1,11 +1,17 @@
 import { Link } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { historyItem } from "../../slices/history";
 
 export const History = () => {
   const history = useSelector((state) => state.history.history);
   const dispatch = useDispatch();
-  console.log("history", history);
+  const { user: currentUser } = useSelector((state) => state.auth);
+  useSelector((state) => console.log(state.auth));
+
+  if (!currentUser) {
+    return <Navigate to="/login" />;
+  }
 
   const putValueToInput = (item) => {
     dispatch(historyItem(item));

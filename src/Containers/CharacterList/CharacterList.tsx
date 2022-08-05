@@ -29,7 +29,7 @@ export const CharacterList = (characters: Characters) => {
           name={el.name}
           image={el.image}
           character={el}
-          storedCharacter={favorites.some((o) => o.name === el.name)}
+          storedCharacter={favorites.some((id) => id === el.id)}
           addCharacterToFavorites={addCharacterToFavorites}
           removeCharacterFromFavorites={removeCharacterFromFavorites}
         />

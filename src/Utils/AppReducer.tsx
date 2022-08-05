@@ -4,12 +4,12 @@ import {
 } from "./CharacterContext";
 
 type stateType = {
-  favorites: { name: string }[];
+  favorites: string[];
 };
 
 type actionType = {
   type: string;
-  payload: any;
+  payload: string;
 };
 
 export const AppReducer = (state: stateType, action: actionType): stateType => {
@@ -23,7 +23,7 @@ export const AppReducer = (state: stateType, action: actionType): stateType => {
       return {
         ...state,
         favorites: state.favorites.filter(
-          (p) => p.name !== action.payload
+          (id) => id !== action.payload
         ),
       };
     default:

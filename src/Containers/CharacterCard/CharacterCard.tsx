@@ -32,8 +32,8 @@ export const CharacterCard = ({
       <span
         onClick={() =>
           storedCharacter
-            ? removeCharacterFromFavorites(name)
-            : addCharacterToFavorites(character)
+            ? removeCharacterFromFavorites(id)
+            : addCharacterToFavorites(id)
         }
       >
         {storedCharacter ? "♥️" : "♡"}

@@ -25,12 +25,12 @@ export const CharacterProvider = (props: { children: any }) => {
     localStorage.setItem("favorites", JSON.stringify(state.favorites));
   }, [state]);
 
-  const addCharacterToFavorites = (character: { name: string }) => {
-    dispatch({ type: ADD_CHARACTER_TO_FAVORITES, payload: character });
+  const addCharacterToFavorites = (id: string ) => {
+    dispatch({ type: ADD_CHARACTER_TO_FAVORITES, payload: id });
   };
 
-  const removeCharacterFromFavorites = (name: string) => {
-    dispatch({ type: REMOVE_CHARACTER_FROM_FAVORITES, payload: name });
+  const removeCharacterFromFavorites = (id: string) => {
+    dispatch({ type: REMOVE_CHARACTER_FROM_FAVORITES, payload: id });
   };
 
   return (

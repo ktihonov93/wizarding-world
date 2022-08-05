@@ -1,50 +1,16 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
 import { useParams } from "react-router-dom";
 import LoadingSpinner from "../LoadingSpinner";
+import { useGetCharacterQuery } from "../../features/api/apiSlice";
 import "./CharacterDetails.css";
-
-type Character = {
-  name: string;
-  image: string;
-  gender: string;
-  house: string;
-  birthDate: string;
-  isWizard: boolean;
-  ancestry: string;
-  eyeColour: string;
-  hairColour: string;
-  wand: {
-    wood: {
-      name: string;
-      core: string;
-    };
-    length: string;
-  };
-  isHogwartsStudent: boolean;
-  isHogwartsStaff: boolean;
-  actor: string;
-};
 
 export const CharacterDetails = () => {
   const { id } = useParams();
+  const { data: character, isLoading } = useGetCharacterQuery(id);
 
-  const [character, setCharacter] = useState<Character>();
-  const [loading, setLoading] = useState(true);
+  const defaultImage =
+    "https://cdn.pixabay.com/photo/2017/06/08/17/32/not-found-2384304_960_720.jpg";
 
-  const defaultImage = "https://cdn.pixabay.com/photo/2017/06/08/17/32/not-found-2384304_960_720.jpg"
-
-  useEffect(() => {
-    axios
-      .get(`https://hp-api-marcosmarp.herokuapp.com/api/characters/${id}`)
-      .then((res) => {
-        setCharacter(res.data);
-        setLoading(false);
-        console.log(res);
-      });
-  }, [id]);
-
-  if (loading) {
+  if (isLoading) {
     return <LoadingSpinner />;
   }
 
@@ -60,7 +26,14 @@ export const CharacterDetails = () => {
       <p>gender: {character.gender || "unknown"}</p>
       <p>house: {character.house || "unknown"}</p>
       <p>birthDate: {character.birthDate || "unknown"}</p>
-      <p>wizard: {character.isWizard ? "yes" : (character.isWizard === false ? "no" : "unknown")}</p>
+      <p>
+        wizard:{" "}
+        {character.isWizard
+          ? "yes"
+          : character.isWizard === false
+          ? "no"
+          : "unknown"}
+      </p>
       <p>ancestry: {character.ancestry || "unknown"}</p>
       <p>eyeColour: {character.eyeColour || "unknown"}</p>
       <p>hairColour: {character.hairColour || "unknown"}</p>

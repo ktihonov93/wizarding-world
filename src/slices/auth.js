@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, createAction } from "@reduxjs/toolkit";
 //import { useSelector } from "react-redux";
 import { setMessage } from "./message";
 //import store from '../store';
@@ -54,9 +54,8 @@ export const login = createAsyncThunk(
     }
   }
 );
-export const logout = createAsyncThunk("auth/logout", async () => {
-  await AuthService.logout();
-});
+export const logout = createAction('auth/logout');
+
 const user = null; //store ? store.getState().auth : null
 let initialState = user
   ? { isLoggedIn: true, user }

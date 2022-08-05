@@ -17,16 +17,11 @@ const register = (username, email, password) => {
 
 const login = (username, password) => {
   let UserInStorage = localStorage.getItem(username);
-  console.log("UserInStorage", UserInStorage);
   return Promise.resolve(UserInStorage);
 };
 
-const logout = () => {
-  localStorage.removeItem("user");
-};
 const authService = {
   register,
   login,
-  logout,
 };
 export default authService;

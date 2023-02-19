@@ -32,7 +32,6 @@ const Login = (props) => {
       .unwrap()
       .then((res) => {
         props.history.push("/profile");
-        //window.location.reload();
       })
       .catch(() => {
         setLoading(false);

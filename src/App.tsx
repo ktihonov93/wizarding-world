@@ -1,4 +1,4 @@
-import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Home from "./Containers/Home";
@@ -21,7 +21,7 @@ const App = () => {
           <Header />
           <div className="container mt-3">
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/index.html" element={<Home />} />
               <Route path="/:id" element={<CharacterDetails />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />

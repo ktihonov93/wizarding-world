@@ -12,12 +12,12 @@ export const Header = () => {
   }, [dispatch]);
   return (
     <nav className="navbar navbar-expand navbar-dark bg-dark">
-      <Link to={"/"} className="navbar-brand">
+      <Link to={"/index.html"} className="navbar-brand">
         Wizarding World
       </Link>
       <div className="navbar-nav mr-auto">
         <li className="nav-item">
-          <Link to={"/"} className="nav-link">
+          <Link to={"/index.html"} className="nav-link">
             Home
           </Link>
         </li>

@@ -21,14 +21,14 @@ const App = () => {
           <Header />
           <div className="container mt-3">
             <Routes>
-              <Route path="/index.html" element={<Home />} />
-              <Route path="/:id" element={<CharacterDetails />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/user" element={<BoardUser />} />
-              <Route path="/favorites" element={<FavoriteCharacterList />} />
-              <Route path="/history" element={<History />} />
+              <Route path="/wizarding-world/index.html" element={<Home />} />
+              <Route path="/wizarding-world/:id" element={<CharacterDetails />} />
+              <Route path="/wizarding-world/login" element={<Login />} />
+              <Route path="/wizarding-world/register" element={<Register />} />
+              <Route path="/wizarding-world/profile" element={<Profile />} />
+              <Route path="/wizarding-world/user" element={<BoardUser />} />
+              <Route path="/wizarding-world/favorites" element={<FavoriteCharacterList />} />
+              <Route path="/wizarding-world/history" element={<History />} />
             </Routes>
           </div>
         </ErrorBoundary>

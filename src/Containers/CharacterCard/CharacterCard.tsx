@@ -38,7 +38,7 @@ export const CharacterCard = ({
       >
         {storedCharacter ? "♥️" : "♡"}
       </span>
-      <Link to={{ pathname: `/${id}` }}>Подробнее</Link>
+      <Link to={{ pathname: `/wizarding-world/${id}` }}>Подробнее</Link>
     </article>
   );
 };

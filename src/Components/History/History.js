@@ -9,7 +9,7 @@ export const History = () => {
   const { user: currentUser } = useSelector((state) => state.auth);
 
   if (!currentUser) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/wizarding-world/login" />;
   }
 
   const putValueToInput = (item) => {
@@ -23,7 +23,7 @@ export const History = () => {
         <ul className="history__list">
           {history.map((item, index) => (
             <li key={index}>
-              <Link to={"/"} onClick={() => putValueToInput(item)}>
+              <Link to={"/wizarding-world/index.html"} onClick={() => putValueToInput(item)}>
                 {item}
               </Link>
             </li>

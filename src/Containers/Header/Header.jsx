@@ -40,7 +40,7 @@ export const Header = () => {
             </Link>
           </li>
           <li className="nav-item">
-            <a href="/wizarding-world/#/login" className="nav-link" onClick={logOut}>
+            <a href={"login"} className="nav-link" onClick={logOut}>
               LogOut
             </a>
           </li>

@@ -21,7 +21,7 @@ const App = () => {
           <Header />
           <div className="container mt-3">
             <Routes>
-              <Route path="/wizarding-world/index.html" element={<Home />} />
+              <Route path="/wizarding-world" element={<Home />} />
               <Route path="/wizarding-world/:id" element={<CharacterDetails />} />
               <Route path="/wizarding-world/login" element={<Login />} />
               <Route path="/wizarding-world/register" element={<Register />} />

@@ -23,7 +23,7 @@ export const History = () => {
         <ul className="history__list">
           {history.map((item, index) => (
             <li key={index}>
-              <Link to={"/wizarding-world/index.html"} onClick={() => putValueToInput(item)}>
+              <Link to={"/wizarding-world"} onClick={() => putValueToInput(item)}>
                 {item}
               </Link>
             </li>

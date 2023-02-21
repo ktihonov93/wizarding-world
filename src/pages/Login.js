@@ -31,7 +31,7 @@ const Login = (props) => {
     dispatch(login({ username, password }))
       .unwrap()
       .then((res) => {
-        props.history.push("/wizarding-world/profile");
+        props.history.push("/profile");
       })
       .catch(() => {
         setLoading(false);
@@ -39,7 +39,7 @@ const Login = (props) => {
   };
 
   if (isLoggedIn) {
-    return <Navigate to="/wizarding-world/profile" />;
+    return <Navigate to="/profile" />;
   }
 
   return (

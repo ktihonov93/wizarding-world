@@ -15,20 +15,20 @@ import "./App.css";
 
 const App = () => {
   return (
-    <Router>
+    <Router basename="/wizarding-world">
       <CharacterProvider>
         <ErrorBoundary>
           <Header />
           <div className="container mt-3">
             <Routes>
-              <Route path="/wizarding-world" element={<Home />} />
-              <Route path="/wizarding-world/:id" element={<CharacterDetails />} />
-              <Route path="/wizarding-world/login" element={<Login />} />
-              <Route path="/wizarding-world/register" element={<Register />} />
-              <Route path="/wizarding-world/profile" element={<Profile />} />
-              <Route path="/wizarding-world/user" element={<BoardUser />} />
-              <Route path="/wizarding-world/favorites" element={<FavoriteCharacterList />} />
-              <Route path="/wizarding-world/history" element={<History />} />
+              <Route path="/" element={<Home />} />
+              <Route path="/:id" element={<CharacterDetails />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/user" element={<BoardUser />} />
+              <Route path="/favorites" element={<FavoriteCharacterList />} />
+              <Route path="/history" element={<History />} />
             </Routes>
           </div>
         </ErrorBoundary>

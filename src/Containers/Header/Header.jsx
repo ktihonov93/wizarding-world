@@ -12,12 +12,12 @@ export const Header = () => {
   }, [dispatch]);
   return (
     <nav className="navbar navbar-expand navbar-dark bg-dark">
-      <Link to={"/wizarding-world"} className="navbar-brand">
+      <Link to={"/"} className="navbar-brand">
         Wizarding World
       </Link>
       <div className="navbar-nav mr-auto">
         <li className="nav-item">
-          <Link to={"/wizarding-world"} className="nav-link">
+          <Link to={"/"} className="nav-link">
             Home
           </Link>
         </li>
@@ -25,17 +25,17 @@ export const Header = () => {
       {currentUser ? (
         <div className="navbar-nav ml-auto">
           <li className="nav-item">
-            <Link to={"/wizarding-world/favorites"} className="nav-link">
+            <Link to={"/favorites"} className="nav-link">
               Favorites
             </Link>
           </li>
           <li className="nav-item">
-            <Link to={"/wizarding-world/history"} className="nav-link">
+            <Link to={"/history"} className="nav-link">
               History
             </Link>
           </li>
           <li className="nav-item">
-            <Link to={"/wizarding-world/profile"} className="nav-link">
+            <Link to={"/profile"} className="nav-link">
               {currentUser.username}
             </Link>
           </li>
@@ -48,12 +48,12 @@ export const Header = () => {
       ) : (
         <div className="navbar-nav ml-auto">
           <li className="nav-item">
-            <Link to={"/wizarding-world/login"} className="nav-link">
+            <Link to={"/login"} className="nav-link">
               Login
             </Link>
           </li>
           <li className="nav-item">
-            <Link to={"/wizarding-world/register"} className="nav-link">
+            <Link to={"/register"} className="nav-link">
               Sign Up
             </Link>
           </li>

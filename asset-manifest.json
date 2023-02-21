@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/wizarding-world/static/css/main.e707568a.css",
-    "main.js": "/wizarding-world/static/js/main.c3d33856.js",
+    "main.js": "/wizarding-world/static/js/main.2533fc19.js",
     "static/media/magnif.gif": "/wizarding-world/static/media/magnif.613c334f3fe83bcd8a08.gif",
     "index.html": "/wizarding-world/index.html",
     "main.e707568a.css.map": "/wizarding-world/static/css/main.e707568a.css.map",
-    "main.c3d33856.js.map": "/wizarding-world/static/js/main.c3d33856.js.map"
+    "main.2533fc19.js.map": "/wizarding-world/static/js/main.2533fc19.js.map"
   },
   "entrypoints": [
     "static/css/main.e707568a.css",
-    "static/js/main.c3d33856.js"
+    "static/js/main.2533fc19.js"
   ]
 }

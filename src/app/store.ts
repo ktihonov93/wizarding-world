@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import authReducer from "./slices/auth";
-import messageReducer from "./slices/message";
-import historyReducer from "./slices/history";
-import { customMiddleWare } from "./services/customMiddleWare";
-import { apiSlice } from "./features/api/apiSlice";
+import authReducer from "../slices/auth";
+import messageReducer from "../slices/message";
+import historyReducer from "../slices/history";
+import { customMiddleWare } from "../services/customMiddleWare";
+import { apiSlice } from "../features/api/apiSlice";
 
 const reducer = {
   auth: authReducer,
@@ -18,3 +18,6 @@ const store = configureStore({
   devTools: true,
 });
 export default store;
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;

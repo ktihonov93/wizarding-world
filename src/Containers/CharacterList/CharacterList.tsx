@@ -8,23 +8,20 @@ type Props = {
   characters: Characters;
 };
 
-export const CharacterList = ({characters}: Props): JSX.Element => {
-  const {
-    favorites,
-    addCharacterToFavorites,
-    removeCharacterFromFavorites,
-  } = useContext(CharacterContext);
+export const CharacterList = ({ characters }: Props): JSX.Element => {
+  const { favorites, addCharacterToFavorites, removeCharacterFromFavorites } =
+    useContext(CharacterContext);
 
   return (
     <section className="CharacterList">
-      {characters.map((el) => (
+      {characters.map((item) => (
         <CharacterCard
-          key={el.id}
-          id={el.id}
-          name={el.name}
-          image={el.image}
-          character={el}
-          storedCharacter={favorites.some((id) => id === el.id)}
+          key={item.id}
+          id={item.id}
+          name={item.name}
+          image={item.image}
+          character={item}
+          storedCharacter={favorites.some((id) => id === item.id)}
           addCharacterToFavorites={addCharacterToFavorites}
           removeCharacterFromFavorites={removeCharacterFromFavorites}
         />

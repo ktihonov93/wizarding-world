@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Home from "./Containers/Home";
+import Home from "./pages/Home/ui";
 import CharacterDetails from "./Components/CharacterDetails";
 import FavoriteCharacterList from "./Containers/FavoriteCharacterList";
 import Header from "./Containers/Header";

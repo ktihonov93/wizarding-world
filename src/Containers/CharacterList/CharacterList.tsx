@@ -1,19 +1,14 @@
 import { useContext } from "react";
 import CharacterCard from "../CharacterCard";
 import { CharacterContext } from "../../Utils/CharacterContext";
+import { Characters } from "../../shared/api/types";
 import "./CharacterList.css";
 
-type Characters = {
-  characters: [
-    {
-      name: string;
-      image: string;
-      id: string;
-    }
-  ];
+type Props = {
+  characters: Characters;
 };
 
-export const CharacterList = (characters: Characters) => {
+export const CharacterList = ({characters}: Props): JSX.Element => {
   const {
     favorites,
     addCharacterToFavorites,
@@ -22,7 +17,7 @@ export const CharacterList = (characters: Characters) => {
 
   return (
     <section className="CharacterList">
-      {characters.characters.map((el) => (
+      {characters.map((el) => (
         <CharacterCard
           key={el.id}
           id={el.id}

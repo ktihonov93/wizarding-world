@@ -1,31 +1,18 @@
 import { useState } from "react";
 import { useDebounce } from "use-debounce";
-import CharacterList from "../CharacterList";
-import { useFetchingData } from "../../hooks/useFetchingData";
-import SearchPanel from "../../Components/SearchPanel";
+import CharacterList from "../../../Containers/CharacterList";
+import SearchPanel from "../../../Components/SearchPanel";
 import "./Home.css";
+import { useGetCharacterQuery } from "../../../shared/api/characterApi";
 
-type Character = [
-  {
-    name: string;
-    image: string;
-    id: string;
-    storedCharacter: boolean;
-    addCharacterToFavorites: Function;
-  }
-];
-
-export const Home = () => {
-  const [characters, setCharacters] = useState<Character>();
-  const cardsOnPage = 12;
+export const Home = (): JSX.Element => {
   const [search, setSearch] = useState("");
-  const url = "https://hp-api.onrender.com/api/characters";
-
   const timeout = 250;
-
   const [searchDebounced] = useDebounce(search, timeout);
+  const cardsOnPage = 12;
+  const { data: characters } = useGetCharacterQuery({searchDebounced, cardsOnPage});
 
-  useFetchingData(searchDebounced, url, setCharacters, cardsOnPage)
+  console.log(characters)
 
   return (
     <section className="Home container">
